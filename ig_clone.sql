@@ -1,5 +1,7 @@
 -- INSTAGRAM TABLES 
 
+
+-- users table
 CREATE TABLE users (
     id INT AUTO_INCREMENT PRIMARY KEY,
     first_name VARCHAR(100),
@@ -9,6 +11,7 @@ CREATE TABLE users (
     created_at TIMESTAMP DEFAULT NOW()
 );
 
+-- photos table
 CREATE TABLE photos (
     id INT AUTO_INCREMENT PRIMARY KEY,
     image_url VARCHAR(255) NOT NULL,
@@ -17,7 +20,7 @@ CREATE TABLE photos (
     FOREIGN KEY(user_id) REFERENCES users(id)
 );
 
-
+-- comments table
 CREATE TABLE comments (
     id INT AUTO_INCREMENT PRIMARY KEY,
     comment_text VARCHAR(255) NOT NULL,
@@ -28,7 +31,7 @@ CREATE TABLE comments (
     FOREIGN KEY(photo_id) REFERENCES photos(id)
 );
 
-
+-- likes table
 CREATE TABLE likes (
     user_id INT NOT NULL,
     photo_id INT NOT NULL,
@@ -39,6 +42,7 @@ CREATE TABLE likes (
 );
 
 
+-- follows table
 CREATE TABLE follows (
     follower_id INT NOT NULL,
     followee_id INT NOT NULL,
@@ -49,12 +53,15 @@ CREATE TABLE follows (
 );
 
 
+-- tags table
 CREATE TABLE tags (
     id INT AUTO_INCREMENT PRIMARY KEY,
     tag_name VARCHAR(255) UNIQUE,
     created_at TIMESTAMP DEFAULT NOW()
 );
 
+
+-- photo_tags table
 CREATE TABLE photo_tags (
     photo_id INT NOT NULL,
     tag_id INT NOT NULL,
