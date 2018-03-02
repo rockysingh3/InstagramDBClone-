@@ -1,9 +1,11 @@
 -- INSTAGRAM TABLES 
 
-CREATE TABLE user (
-    id INT AUTO_INCRMENT PRIMARY,
+CREATE TABLE users (
+    id INTEGER AUTO_INCRMENT PRIMARY KEY,
     first_name VARCHAR(100),
     last_name VARCHAR(100),
-    user_name VARCHAR(100),
-    email VARCHAR(100)
+    user_name VARCHAR(100) UNIQUE NOT NULL,
+    email VARCHAR(100),
+    created_at TIMESTAMP DEFAULT NOW()
 );
+
